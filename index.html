@@ -46,7 +46,7 @@
         <h1 class="hero-title">Kiki</h1>
         <p class="hero-role">資訊工程學生 / 軟體開發愛好者</p>
         <p class="hero-copy">
-          這不是只展示作品的頁面，而是我的工程成長紀錄：我做過什麼、解決過什麼問題、學到了什麼，
+          這不是只展示作品的頁面，而是我的工程成長紀錄：我做過什麼、學到什麼，
           以及下一步正在補強哪些能力。現階段專注 ASP.NET Core、資料庫、部署維運與自動化流程。
         </p>
         <div class="hero-actions">
@@ -100,7 +100,7 @@
         </article>
         <article class="card status-card reveal">
           <span>年級</span>
-          <strong>在學中</strong>
+          <strong>五專一</strong>
         </article>
         <article class="card status-card wide reveal">
           <span>目前學習技術</span>
@@ -126,7 +126,7 @@
         <article class="card info-card reveal">
           <div class="icon">⚙</div>
           <h3>專長</h3>
-          <p>熟悉 ASP.NET Core 後端開發、SQL Server 資料管理、API 串接與部署流程。</p>
+          <p>熟悉 ASP.NET Core 後端開發、SQL Server 資料庫管理、API 串接與部署流程。</p>
         </article>
         <article class="card info-card reveal">
           <div class="icon">⌁</div>
@@ -227,7 +227,7 @@
           <p class="section-kicker">Technical Challenges</p>
           <h2>解決過的問題</h2>
         </div>
-        <p class="section-desc">這些經驗來自實際部署、資料搬遷與維運問題，重點不只是做出功能，也包含定位問題與修正系統設定。</p>
+        <p class="section-desc">這些經驗來自實際部署、資料搬遷與維運問題，重點不只做功能，也含定位問題與修正系統設定。</p>
       </div>
       <div class="grid challenges-grid">
         <article class="card challenge-card reveal">
@@ -635,6 +635,8 @@
           ${createProgress("完成度", project.progress, "project-progress")}
         </article>
       `).join("");
+
+      observeRevealElements();
     }
 
     function renderRepositories(list) {
