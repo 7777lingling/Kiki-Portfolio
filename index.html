@@ -6,14 +6,22 @@
   <meta name="description" content="Kiki Portfolio - 資訊工程學生與軟體開發愛好者的個人作品集。" />
   <title>Kiki Portfolio</title>
   <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="theme-lavender.css" />
 </head>
 <body>
   <header class="site-header" id="top">
     <nav class="nav" aria-label="主選單">
-      <a class="brand" href="#top" aria-label="Kiki Developer Journey 首頁">
-        <span class="brand-mark">K</span>
-        <span>Kiki Journey</span>
-      </a>
+      <div class="nav-left">
+        <a class="brand" href="#top" aria-label="Kiki Developer Journey 首頁">
+          <span class="brand-mark">K</span>
+          <span>Kiki Journey</span>
+        </a>
+        <div class="theme-panel" aria-label="個人化視覺風格">
+          <span class="theme-panel-label">風格</span>
+          <button class="theme-chip is-active" type="button" data-theme-option="tech">科技深色</button>
+          <button class="theme-chip lavender-chip" type="button" data-theme-option="lavender">薰衣草水晶</button>
+        </div>
+      </div>
       <button class="menu-toggle" type="button" aria-label="開啟選單" aria-expanded="false">
         <span></span>
         <span></span>
@@ -710,6 +718,29 @@
       });
     }
 
+    function initThemeSwitcher() {
+      const buttons = document.querySelectorAll("[data-theme-option]");
+      const savedTheme = localStorage.getItem("portfolioTheme") || "lavender";
+
+      function applyTheme(theme) {
+        document.body.dataset.theme = theme;
+        localStorage.setItem("portfolioTheme", theme);
+        buttons.forEach(button => {
+          const isActive = button.dataset.themeOption === theme;
+          button.classList.toggle("is-active", isActive);
+          button.setAttribute("aria-pressed", String(isActive));
+        });
+      }
+
+      buttons.forEach(button => {
+        button.addEventListener("click", () => {
+          applyTheme(button.dataset.themeOption);
+        });
+      });
+
+      applyTheme(savedTheme);
+    }
+
     function observeRevealElements() {
       const revealElements = document.querySelectorAll(".reveal:not(.is-visible)");
       const observer = new IntersectionObserver((entries, currentObserver) => {
@@ -754,6 +785,7 @@
       renderFeaturedProjects();
       renderRepositories(filteredRepositories);
       initNavigation();
+      initThemeSwitcher();
       initProjectPagination();
       initRepositoryPagination();
       observeRevealElements();

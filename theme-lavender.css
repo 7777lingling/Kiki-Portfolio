@@ -1,0 +1,330 @@
+body[data-theme="lavender"] {
+  --bg: #6b4c8b;
+  --bg-soft: #8e6cab;
+  --panel: rgba(237, 217, 243, 0.32);
+  --panel-solid: rgba(237, 217, 243, 0.52);
+  --line: rgba(246, 230, 255, 0.32);
+  --text: #F8F4FC;
+  --muted: #E6DDF2;
+  --cyan: #5b3b78;
+  --green: #d6c0ee;
+  --amber: #fff0ff;
+  --rose: #cdb6e6;
+  --blue: #b398d6;
+  --shadow: 0 28px 90px rgba(51, 31, 68, 0.3);
+  background:
+    radial-gradient(circle at 18% 12%, rgba(237, 217, 243, 0.58), transparent 25%),
+    radial-gradient(circle at 72% 18%, rgba(203, 182, 230, 0.54), transparent 32%),
+    radial-gradient(circle at 58% 92%, rgba(255, 240, 255, 0.34), transparent 34%),
+    linear-gradient(135deg, #6b4c8b 0%, #8e6cab 40%, #b398d6 72%, #edd9f3 100%);
+  color: var(--text);
+}
+
+body[data-theme="lavender"]::before {
+  background-image:
+    radial-gradient(circle, rgba(255, 248, 255, 0.9) 0 1px, transparent 1.8px),
+    radial-gradient(circle, rgba(246, 230, 255, 0.46) 0 1px, transparent 2px),
+    linear-gradient(rgba(255, 255, 255, 0.07) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+  background-size: 46px 46px, 118px 118px, 58px 58px, 58px 58px;
+  mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.9), transparent 86%);
+}
+
+body[data-theme="lavender"]::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(circle at 24% 22%, rgba(255, 255, 255, 0.95) 0 1px, transparent 2px),
+    radial-gradient(circle at 78% 34%, rgba(240, 215, 255, 0.72) 0 1px, transparent 2px),
+    radial-gradient(circle at 42% 72%, rgba(246, 230, 255, 0.44) 0 1px, transparent 2px),
+    linear-gradient(115deg, transparent 0 46%, rgba(255, 255, 255, 0.16) 49%, transparent 53%);
+  background-size: 160px 160px, 210px 210px, 260px 260px, 420px 420px;
+  animation: lavenderSparkle 7s ease-in-out infinite alternate;
+  z-index: -1;
+}
+
+body[data-theme="lavender"] h1,
+body[data-theme="lavender"] h2 {
+  color: #FFFFFF;
+  font-family: Georgia, "Times New Roman", "Noto Serif TC", serif;
+  font-weight: 700;
+  text-shadow:
+    0 0 18px rgba(237, 217, 243, 0.38),
+    0 3px 20px rgba(75, 48, 98, 0.24);
+}
+
+body[data-theme="lavender"] h3,
+body[data-theme="lavender"] .brand,
+body[data-theme="lavender"] .hero-role,
+body[data-theme="lavender"] .status-card strong {
+  color: #FFFFFF;
+  text-shadow: 0 0 18px rgba(237, 217, 243, 0.24);
+}
+
+body[data-theme="lavender"] .section-kicker,
+body[data-theme="lavender"] .eyebrow,
+body[data-theme="lavender"] .repo-link,
+body[data-theme="lavender"] .project-index {
+  color: #4c2f68;
+  letter-spacing: 0.14em;
+  text-shadow: 0 0 12px rgba(237, 217, 243, 0.34);
+}
+
+body[data-theme="lavender"] .eyebrow {
+  border-color: rgba(91, 59, 120, 0.32);
+  background: rgba(237, 217, 243, 0.2);
+}
+
+body[data-theme="lavender"] .pulse {
+  background: #5b3b78;
+  box-shadow: 0 0 0 rgba(91, 59, 120, 0.48);
+  animation: none;
+}
+
+body[data-theme="lavender"] .hero-copy,
+body[data-theme="lavender"] .section-desc,
+body[data-theme="lavender"] .card p,
+body[data-theme="lavender"] .status-card span,
+body[data-theme="lavender"] .page-status,
+body[data-theme="lavender"] .project-role,
+body[data-theme="lavender"] .project-learned {
+  color: #E6DDF2;
+}
+
+body[data-theme="lavender"] .site-header {
+  background: rgba(78, 50, 104, 0.34);
+  box-shadow: 0 10px 46px rgba(72, 45, 95, 0.18);
+}
+
+body[data-theme="lavender"] .site-header.is-scrolled {
+  background: rgba(78, 50, 104, 0.54);
+}
+
+body[data-theme="lavender"] .brand-mark {
+  border-color: rgba(237, 217, 243, 0.55);
+  background:
+    linear-gradient(135deg, rgba(255, 248, 255, 0.48), rgba(179, 152, 214, 0.34)),
+    radial-gradient(circle at 32% 24%, rgba(255, 255, 255, 0.58), transparent 28%);
+  box-shadow:
+    0 0 34px rgba(237, 217, 243, 0.36),
+    inset 0 1px 0 rgba(255, 255, 255, 0.52);
+}
+
+body[data-theme="lavender"] .icon,
+body[data-theme="lavender"] .timeline-year {
+  border-color: rgba(91, 59, 120, 0.5);
+  background:
+    linear-gradient(135deg, rgba(237, 217, 243, 0.34), rgba(91, 59, 120, 0.16)),
+    rgba(237, 217, 243, 0.12);
+  color: #4c2f68;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 248, 255, 0.38),
+    0 0 22px rgba(91, 59, 120, 0.18);
+  text-shadow: none;
+}
+
+body[data-theme="lavender"] .timeline::before {
+  background: rgba(91, 59, 120, 0.32);
+}
+
+body[data-theme="lavender"] .nav-links a:hover,
+body[data-theme="lavender"] .nav-links a:focus-visible {
+  background: rgba(237, 217, 243, 0.16);
+}
+
+body[data-theme="lavender"] .theme-panel,
+body[data-theme="lavender"] .menu-toggle {
+  background: rgba(237, 217, 243, 0.18);
+  border-color: rgba(246, 230, 255, 0.3);
+  box-shadow: inset 0 1px 0 rgba(255, 248, 255, 0.52);
+}
+
+body[data-theme="lavender"] .theme-panel-label,
+body[data-theme="lavender"] .theme-chip {
+  color: #eadcf2;
+}
+
+body[data-theme="lavender"] .theme-chip.is-active {
+  border-color: rgba(246, 230, 255, 0.52);
+  background: rgba(237, 217, 243, 0.22);
+  color: #F8F4FC;
+  box-shadow: 0 0 20px rgba(237, 217, 243, 0.28);
+}
+
+body[data-theme="lavender"] .hero {
+  position: relative;
+}
+
+body[data-theme="lavender"] .hero::before {
+  content: "";
+  position: absolute;
+  width: min(58vw, 680px);
+  aspect-ratio: 1;
+  right: -16%;
+  top: 5%;
+  pointer-events: none;
+  background:
+    radial-gradient(circle at 38% 32%, rgba(255, 248, 255, 0.72), transparent 9%),
+    radial-gradient(circle at 50% 50%, rgba(237, 217, 243, 0.34), transparent 36%),
+    conic-gradient(from 18deg, transparent, rgba(255, 255, 255, 0.2), transparent 18%, rgba(205, 182, 230, 0.2), transparent 38%);
+  filter: blur(1px);
+  opacity: 0.84;
+  animation: lavenderAura 9s ease-in-out infinite alternate;
+  z-index: -1;
+}
+
+body[data-theme="lavender"] .hero::after {
+  content: "";
+  position: absolute;
+  width: min(36vw, 420px);
+  aspect-ratio: 1;
+  right: 4%;
+  top: 20%;
+  pointer-events: none;
+  background:
+    linear-gradient(135deg, transparent 45%, rgba(255, 255, 255, 0.28) 50%, transparent 55%),
+    linear-gradient(45deg, transparent 45%, rgba(240, 215, 255, 0.18) 50%, transparent 55%);
+  border-radius: 50%;
+  opacity: 0.52;
+  transform: rotate(12deg);
+  z-index: -1;
+}
+
+body[data-theme="lavender"] .card,
+body[data-theme="lavender"] .terminal-card,
+body[data-theme="lavender"] .learning-strip {
+  background:
+    linear-gradient(145deg, rgba(120, 90, 150, 0.18), rgba(120, 90, 150, 0.18)),
+    linear-gradient(110deg, rgba(255, 255, 255, 0.16), transparent 36%, rgba(255, 255, 255, 0.08));
+  border-color: rgba(237, 217, 243, 0.32);
+  box-shadow:
+    0 24px 74px rgba(62, 37, 82, 0.22),
+    inset 0 1px 0 rgba(255, 248, 255, 0.52),
+    inset 0 -1px 0 rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(18px) saturate(1.18);
+}
+
+body[data-theme="lavender"] .card::before {
+  background:
+    linear-gradient(135deg, rgba(255, 248, 255, 0.38), transparent 34%),
+    linear-gradient(110deg, transparent 18%, rgba(240, 215, 255, 0.2) 38%, transparent 58%);
+}
+
+body[data-theme="lavender"] .card:hover {
+  border-color: rgba(246, 230, 255, 0.54);
+  background:
+    linear-gradient(145deg, rgba(120, 90, 150, 0.24), rgba(120, 90, 150, 0.2)),
+    linear-gradient(110deg, rgba(255, 255, 255, 0.24), transparent 36%, rgba(255, 255, 255, 0.12));
+}
+
+body[data-theme="lavender"] .terminal-top {
+  background: rgba(255, 248, 255, 0.14);
+}
+
+body[data-theme="lavender"] .terminal-body {
+  color: #F8F4FC;
+}
+
+body[data-theme="lavender"] .code-key,
+body[data-theme="lavender"] .code-fn {
+  color: #f6e6ff;
+}
+
+body[data-theme="lavender"] .code-string {
+  color: #d8c2f1;
+}
+
+body[data-theme="lavender"] .btn,
+body[data-theme="lavender"] .page-btn,
+body[data-theme="lavender"] .repo-search {
+  background: rgba(237, 217, 243, 0.22);
+  border-color: rgba(237, 217, 243, 0.34);
+  color: #F8F4FC;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 248, 255, 0.48),
+    0 12px 34px rgba(75, 48, 98, 0.12);
+}
+
+body[data-theme="lavender"] .btn:hover,
+body[data-theme="lavender"] .btn:focus-visible,
+body[data-theme="lavender"] .page-btn:hover:not(:disabled),
+body[data-theme="lavender"] .page-btn:focus-visible:not(:disabled),
+body[data-theme="lavender"] .repo-search:focus {
+  border-color: rgba(91, 59, 120, 0.46);
+  color: #4c2f68;
+  box-shadow:
+    0 0 0 4px rgba(91, 59, 120, 0.08),
+    0 16px 42px rgba(75, 48, 98, 0.16);
+}
+
+body[data-theme="lavender"] .btn.primary {
+  background: linear-gradient(135deg, rgba(237, 217, 243, 0.36), rgba(179, 152, 214, 0.28));
+  border-color: rgba(246, 230, 255, 0.48);
+}
+
+body[data-theme="lavender"] .tag {
+  background: rgba(237, 217, 243, 0.16);
+  border-color: rgba(91, 59, 120, 0.32);
+  color: #F8F4FC;
+}
+
+body[data-theme="lavender"] .tag.cyan,
+body[data-theme="lavender"] .tag.green,
+body[data-theme="lavender"] .tag.amber,
+body[data-theme="lavender"] .tag.rose {
+  border-color: rgba(91, 59, 120, 0.34);
+  color: #4c2f68;
+  background: rgba(237, 217, 243, 0.24);
+}
+
+body[data-theme="lavender"] .progress-track {
+  background: rgba(84, 54, 110, 0.32);
+  border-color: rgba(237, 217, 243, 0.24);
+  box-shadow: inset 0 0 14px rgba(62, 37, 82, 0.18);
+}
+
+body[data-theme="lavender"] .progress-value,
+body[data-theme="lavender"] .meter-value {
+  color: #4c2f68;
+  text-shadow: 0 0 10px rgba(237, 217, 243, 0.28);
+}
+
+body[data-theme="lavender"] .progress-fill {
+  background: linear-gradient(90deg, #5b3b78, #8e6cab, #cdb6e6);
+  box-shadow:
+    0 0 14px rgba(91, 59, 120, 0.36),
+    0 0 28px rgba(205, 182, 230, 0.28);
+}
+
+body[data-theme="lavender"] .tech-radar {
+  border-color: rgba(91, 59, 120, 0.42);
+  background:
+    radial-gradient(circle at 34% 28%, rgba(255, 255, 255, 0.62), transparent 13%),
+    radial-gradient(circle, transparent 30%, rgba(91, 59, 120, 0.12) 31%, transparent 32%),
+    rgba(237, 217, 243, 0.08);
+  box-shadow: 0 0 54px rgba(91, 59, 120, 0.22);
+}
+
+@keyframes lavenderSparkle {
+  from {
+    opacity: 0.48;
+    transform: translateY(0);
+  }
+  to {
+    opacity: 0.9;
+    transform: translateY(-8px);
+  }
+}
+
+@keyframes lavenderAura {
+  from {
+    transform: scale(0.98) rotate(0deg);
+    opacity: 0.64;
+  }
+  to {
+    transform: scale(1.04) rotate(8deg);
+    opacity: 0.9;
+  }
+}
