@@ -450,6 +450,9 @@
     .project-card,
     .repo-card,
     .achievement-card,
+    .status-card,
+    .timeline-item,
+    .challenge-card,
     .contact-card {
       padding: 22px;
     }
@@ -478,8 +481,128 @@
       color: var(--muted);
     }
 
-    .skills-grid {
-      grid-template-columns: repeat(4, minmax(0, 1fr));
+    .status-grid {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: stretch;
+    }
+
+    .status-card {
+      flex: 1 1 216px;
+      max-width: 260px;
+      min-height: 130px;
+    }
+
+    .status-card span {
+      position: relative;
+      display: block;
+      margin-bottom: 10px;
+      color: var(--muted);
+      font-size: 1rem;
+      font-weight: 700;
+    }
+
+    .status-card strong {
+      position: relative;
+      display: block;
+      color: var(--text);
+      font-size: 1.22rem;
+      line-height: 1.45;
+    }
+
+    .status-card.wide {
+      flex-basis: 454px;
+      max-width: 454px;
+    }
+
+    .timeline {
+      position: relative;
+      display: grid;
+      gap: 18px;
+    }
+
+    .timeline::before {
+      content: "";
+      position: absolute;
+      top: 18px;
+      bottom: 18px;
+      left: 46px;
+      width: 1px;
+      background: rgba(34, 211, 238, 0.28);
+    }
+
+    .timeline-item {
+      display: grid;
+      grid-template-columns: 92px 1fr;
+      gap: 18px;
+      align-items: start;
+    }
+
+    .timeline-year {
+      position: relative;
+      display: grid;
+      place-items: center;
+      width: 72px;
+      height: 42px;
+      border: 1px solid rgba(34, 211, 238, 0.36);
+      border-radius: var(--radius);
+      background: rgba(34, 211, 238, 0.08);
+      color: #a5f3fc;
+      font-weight: 900;
+    }
+
+    .progress-head {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+      margin-bottom: 12px;
+    }
+
+    .progress-label {
+      color: var(--text);
+      font-weight: 850;
+    }
+
+    .progress-value {
+      flex: 0 0 auto;
+      color: #a5f3fc;
+      font-family: "SFMono-Regular", Consolas, monospace;
+      font-size: 0.92rem;
+      font-weight: 850;
+    }
+
+    .progress-track {
+      position: relative;
+      width: 100%;
+      height: 10px;
+      overflow: hidden;
+      border: 1px solid rgba(148, 163, 184, 0.18);
+      border-radius: 999px;
+      background: rgba(8, 11, 18, 0.62);
+    }
+
+    .progress-fill {
+      height: 100%;
+      width: var(--value);
+      border-radius: inherit;
+      background: linear-gradient(90deg, var(--cyan), var(--green));
+    }
+
+    .learning-section {
+      padding-top: 20px;
+    }
+
+    .learning-strip {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      padding: 22px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: rgba(18, 26, 42, 0.56);
     }
 
     .skill-list {
@@ -557,6 +680,24 @@
       padding-top: 18px;
     }
 
+    .project-role,
+    .project-learned {
+      position: relative;
+      margin-top: 12px;
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+
+    .project-learned {
+      margin-bottom: 0;
+    }
+
+    .project-progress,
+    .repo-progress {
+      position: relative;
+      margin-top: 18px;
+    }
+
     .repo-toolbar {
       display: flex;
       flex-wrap: wrap;
@@ -587,7 +728,7 @@
     }
 
     .repo-card {
-      min-height: 230px;
+      min-height: 270px;
       display: flex;
       flex-direction: column;
     }
@@ -609,6 +750,82 @@
       color: #b9f6ff;
       font-size: 0.92rem;
       font-weight: 800;
+    }
+
+    .repo-pagination {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      margin-top: 24px;
+    }
+
+    .page-btn {
+      width: 42px;
+      height: 42px;
+      display: grid;
+      place-items: center;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: rgba(18, 26, 42, 0.76);
+      color: var(--text);
+      font-size: 1.18rem;
+      font-weight: 900;
+      cursor: pointer;
+      transition: border-color 0.2s ease, background 0.2s ease, color 0.2s ease;
+    }
+
+    .page-btn:hover:not(:disabled),
+    .page-btn:focus-visible:not(:disabled) {
+      border-color: rgba(34, 211, 238, 0.55);
+      background: rgba(34, 211, 238, 0.1);
+      color: #a5f3fc;
+      outline: none;
+    }
+
+    .page-btn:disabled {
+      cursor: not-allowed;
+      opacity: 0.42;
+    }
+
+    .page-status {
+      min-width: 72px;
+      color: var(--muted);
+      font-family: "SFMono-Regular", Consolas, monospace;
+      font-weight: 800;
+      text-align: center;
+    }
+
+    .challenges-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .challenge-card dl {
+      position: relative;
+      margin: 0;
+    }
+
+    .challenge-card dt {
+      margin-top: 14px;
+      color: var(--cyan);
+      font-weight: 850;
+    }
+
+    .challenge-card dd {
+      margin: 5px 0 0;
+      color: var(--muted);
+    }
+
+    .team-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .team-card {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      padding: 26px;
     }
 
     .achievements-grid {
@@ -710,12 +927,13 @@
       }
 
       .about-grid,
-      .skills-grid {
+      .status-grid {
         grid-template-columns: repeat(2, minmax(0, 1fr));
       }
 
       .projects-grid,
-      .repo-grid {
+      .repo-grid,
+      .challenges-grid {
         grid-template-columns: repeat(2, minmax(0, 1fr));
       }
 
@@ -801,16 +1019,48 @@
       }
 
       .about-grid,
-      .skills-grid,
+      .status-grid,
       .projects-grid,
       .repo-grid,
+      .challenges-grid,
       .achievements-grid,
       .contact-wrap {
         grid-template-columns: 1fr;
       }
 
+      .timeline::before {
+        left: 20px;
+      }
+
+      .timeline-item {
+        grid-template-columns: 1fr;
+        padding-left: 50px;
+      }
+
+      .status-card.wide {
+        flex-basis: 100%;
+        max-width: 100%;
+      }
+
+      .timeline-year {
+        position: absolute;
+        left: 18px;
+        width: 42px;
+        min-width: 42px;
+        padding: 0;
+        writing-mode: vertical-rl;
+      }
+
       .contact-card {
         display: block;
+      }
+
+      .team-card {
+        display: block;
+      }
+
+      .team-card .btn {
+        margin-top: 18px;
       }
 
       .contact-card .btn {
@@ -844,9 +1094,9 @@
 <body>
   <header class="site-header" id="top">
     <nav class="nav" aria-label="主選單">
-      <a class="brand" href="#top" aria-label="Kiki Portfolio 首頁">
+      <a class="brand" href="#top" aria-label="Kiki Developer Journey 首頁">
         <span class="brand-mark">K</span>
-        <span>Kiki Portfolio</span>
+        <span>Kiki Journey</span>
       </a>
       <button class="menu-toggle" type="button" aria-label="開啟選單" aria-expanded="false">
         <span></span>
@@ -854,12 +1104,13 @@
         <span></span>
       </button>
       <div class="nav-links">
-        <a href="#about">About</a>
-        <a href="#skills">Skills</a>
-        <a href="#projects">Projects</a>
-        <a href="#repositories">Repos</a>
-        <a href="#achievement">Achievement</a>
-        <a href="#contact">Contact</a>
+        <a href="#status">目前狀態</a>
+        <a href="#timeline">學習歷程</a>
+        <a href="#projects">專案</a>
+        <a href="#challenges">解決問題</a>
+        <a href="#team-projects">實作網站</a>
+        <a href="#repositories">程式庫</a>
+        <a href="#contact">聯絡方式</a>
       </div>
     </nav>
   </header>
@@ -867,12 +1118,12 @@
   <main>
     <section class="section hero">
       <div class="hero-content reveal">
-        <span class="eyebrow"><span class="pulse"></span>Open to build, learn, and ship</span>
+        <span class="eyebrow"><span class="pulse"></span>Developer Journey</span>
         <h1 class="hero-title">Kiki</h1>
         <p class="hero-role">資訊工程學生 / 軟體開發愛好者</p>
         <p class="hero-copy">
-          我專注於後端開發、資料庫設計、網站部署與自動化流程，喜歡把學到的技術做成可運作的產品。
-          從 ASP.NET Core 到 Python 自動化，持續累積完整開發、部署與維護經驗。
+          這不是只展示作品的頁面，而是我的工程成長紀錄：我做過什麼、解決過什麼問題、學到了什麼，
+          以及下一步正在補強哪些能力。現階段專注 ASP.NET Core、資料庫、部署維運與自動化流程。
         </p>
         <div class="hero-actions">
           <a class="btn primary" href="https://github.com/7777lingling" target="_blank" rel="noopener noreferrer" aria-label="前往 Kiki 的 GitHub">
@@ -881,7 +1132,7 @@
             </svg>
             GitHub
           </a>
-          <a class="btn" href="#projects">查看作品</a>
+          <a class="btn" href="#projects">查看實作紀錄</a>
         </div>
       </div>
 
@@ -906,13 +1157,41 @@
       </div>
     </section>
 
+    <section class="section" id="status">
+      <div class="section-head reveal">
+        <div>
+          <p class="section-kicker">Current Status</p>
+          <h2>目前狀態</h2>
+        </div>
+        <p class="section-desc">以在學資訊工程背景為基礎，透過實作專案與工作任務累積系統開發、部署與問題排除經驗。</p>
+      </div>
+      <div class="grid status-grid">
+        <article class="card status-card reveal">
+          <span>姓名</span>
+          <strong>Kiki</strong>
+        </article>
+        <article class="card status-card reveal">
+          <span>學校與科系</span>
+          <strong>資訊工程相關科系</strong>
+        </article>
+        <article class="card status-card reveal">
+          <span>年級</span>
+          <strong>在學中</strong>
+        </article>
+        <article class="card status-card wide reveal">
+          <span>目前學習技術</span>
+          <strong>ASP.NET Core 後端開發、SQL Server / Azure SQL 資料庫設計、IIS 部署維運、GitHub Actions CI/CD，以及 Redis / RabbitMQ 系統整合</strong>
+        </article>
+      </div>
+    </section>
+
     <section class="section" id="about">
       <div class="section-head reveal">
         <div>
           <p class="section-kicker">About Me</p>
           <h2>持續把技術轉成真實作品</h2>
         </div>
-        <p class="section-desc">從課堂基礎、團隊專案到獨立部署，建立能從需求一路做到上線維護的開發能力。</p>
+        <p class="section-desc">從程式基礎、團隊專案到獨立部署，建立能從需求一路做到上線維護的開發能力。</p>
       </div>
       <div class="grid about-grid">
         <article class="card info-card reveal">
@@ -938,83 +1217,188 @@
       </div>
     </section>
 
-    <section class="section" id="skills">
+    <section class="section" id="timeline">
       <div class="section-head reveal">
         <div>
-          <p class="section-kicker">Skills</p>
-          <h2>技能樹</h2>
+          <p class="section-kicker">Learning Timeline</p>
+          <h2>學習時間軸</h2>
         </div>
-        <p class="section-desc">涵蓋後端、資料庫、部署維運與日常開發工具，重視可落地的工程能力。</p>
+        <p class="section-desc">以年度呈現技術成長路徑，從語言基礎到網站開發、資料庫、部署與維運。</p>
       </div>
-      <div class="grid skills-grid">
-        <article class="card skill-card reveal">
-          <div class="icon">BE</div>
-          <h3>後端開發</h3>
-          <ul class="skill-list">
-            <li class="tag cyan">C#</li>
-            <li class="tag cyan">ASP.NET Core</li>
-            <li class="tag cyan">Python</li>
-          </ul>
+      <div class="timeline">
+        <article class="card timeline-item reveal">
+          <div class="timeline-year">2024</div>
+          <div>
+            <h3>程式語言基礎</h3>
+            <div class="skill-list">
+              <span class="tag cyan">C</span>
+              <span class="tag cyan">Python</span>
+            </div>
+          </div>
         </article>
-        <article class="card skill-card reveal">
-          <div class="icon">DB</div>
-          <h3>資料庫</h3>
-          <ul class="skill-list">
-            <li class="tag green">SQL Server</li>
-            <li class="tag green">Azure SQL Database</li>
-            <li class="tag green">EF Core</li>
-            <li class="tag green">Redis</li>
-          </ul>
+        <article class="card timeline-item reveal">
+          <div class="timeline-year">2025</div>
+          <div>
+            <h3>Web 與資料庫實作</h3>
+            <div class="skill-list">
+              <span class="tag green">ASP.NET Core</span>
+              <span class="tag green">SQL Server</span>
+              <span class="tag green">GitHub</span>
+            </div>
+          </div>
         </article>
-        <article class="card skill-card reveal">
-          <div class="icon">Ops</div>
-          <h3>部署與維運</h3>
-          <ul class="skill-list">
-            <li class="tag amber">IIS</li>
-            <li class="tag amber">GitHub Actions</li>
-            <li class="tag amber">Domain Name</li>
-            <li class="tag amber">SSL Certificate</li>
-          </ul>
+        <article class="card timeline-item reveal">
+          <div class="timeline-year">2026</div>
+          <div>
+            <h3>部署、雲端資料庫與系統維運</h3>
+            <div class="skill-list">
+              <span class="tag amber">Azure SQL</span>
+              <span class="tag amber">IIS</span>
+              <span class="tag amber">GitHub Actions</span>
+              <span class="tag amber">Redis</span>
+              <span class="tag amber">RabbitMQ</span>
+              <span class="tag amber">校務系統客服工程師</span>
+            </div>
+          </div>
         </article>
-        <article class="card skill-card reveal">
-          <div class="icon">Tool</div>
-          <h3>工具</h3>
-          <ul class="skill-list">
-            <li class="tag rose">GitHub</li>
-            <li class="tag rose">Visual Studio</li>
-            <li class="tag rose">VS Code</li>
-            <li class="tag rose">Cursor</li>
-            <li class="tag rose">ChatGPT</li>
-            <li class="tag rose">Gemini</li>
-          </ul>
-        </article>
+      </div>
+    </section>
+
+    <section class="section learning-section" id="learning">
+      <div class="section-head reveal">
+        <div>
+          <p class="section-kicker">Currently Learning</p>
+          <h2>正在補強的能力</h2>
+        </div>
+        <p class="section-desc">下一階段會把系統設計、架構切分、快取與訊息佇列從測試專案推進到更完整的應用場景。</p>
+      </div>
+      <div class="learning-strip reveal">
+        <span class="tag cyan">Redis</span>
+        <span class="tag cyan">RabbitMQ</span>
+        <span class="tag green">Clean Architecture</span>
+        <span class="tag green">System Analysis</span>
+        <span class="tag amber">Azure</span>
       </div>
     </section>
 
     <section class="section" id="projects">
       <div class="section-head reveal">
         <div>
-          <p class="section-kicker">Featured Projects</p>
-          <h2>精選作品</h2>
+          <p class="section-kicker">Project Progress</p>
+          <h2>專案進度</h2>
         </div>
-        <p class="section-desc">以實作導向累積的專案，包含平台開發、團隊協作、監控通知與技術測試。</p>
+        <p class="section-desc">以完成度呈現每個專案目前狀態，方便面試時快速理解作品成熟度與後續規劃。</p>
       </div>
       <div class="grid projects-grid" id="featuredProjects"></div>
+      <div class="repo-pagination reveal" aria-label="專案分頁控制">
+        <button class="page-btn" type="button" id="projectPrev" aria-label="上一頁">&lt;</button>
+        <span class="page-status" id="projectPageStatus">1 / 1</span>
+        <button class="page-btn" type="button" id="projectNext" aria-label="下一頁">&gt;</button>
+      </div>
+    </section>
+
+    <section class="section" id="challenges">
+      <div class="section-head reveal">
+        <div>
+          <p class="section-kicker">Technical Challenges</p>
+          <h2>解決過的問題</h2>
+        </div>
+        <p class="section-desc">這些經驗來自實際部署、資料搬遷與維運問題，重點不只是做出功能，也包含定位問題與修正系統設定。</p>
+      </div>
+      <div class="grid challenges-grid">
+        <article class="card challenge-card reveal">
+          <h3>GitHub Actions 部署失敗</h3>
+          <dl>
+            <dt>解法</dt>
+            <dd>建立 Self-hosted Runner，讓部署流程能連接內部環境與 IIS。</dd>
+            <dt>學到的內容</dt>
+            <dd>CI/CD 不只要會寫 YAML，也要理解執行環境、權限與部署目標。</dd>
+          </dl>
+        </article>
+        <article class="card challenge-card reveal">
+          <h3>IIS 404 / 500</h3>
+          <dl>
+            <dt>解法</dt>
+            <dd>檢查站台路徑、應用程式集區、Web.config 與 .NET Hosting Bundle。</dd>
+            <dt>學到的內容</dt>
+            <dd>後端部署錯誤需要從伺服器設定、執行階段與應用程式紀錄一起排查。</dd>
+          </dl>
+        </article>
+        <article class="card challenge-card reveal">
+          <h3>Azure SQL 搬遷</h3>
+          <dl>
+            <dt>解法</dt>
+            <dd>確認 Schema、資料同步、連線字串與雲端防火牆規則。</dd>
+            <dt>學到的內容</dt>
+            <dd>資料庫搬遷需要同時考慮結構、資料一致性與應用程式連線設定。</dd>
+          </dl>
+        </article>
+        <article class="card challenge-card reveal">
+          <h3>TLS 憑證更新</h3>
+          <dl>
+            <dt>解法</dt>
+            <dd>處理 CSR、SSL 憑證申請與 IIS / Tomcat 匯入設定。</dd>
+            <dt>學到的內容</dt>
+            <dd>HTTPS 上線牽涉憑證鏈、伺服器綁定與到期維護，不能只看程式碼。</dd>
+          </dl>
+        </article>
+      </div>
+    </section>
+
+    <section class="section" id="team-projects">
+      <div class="section-head reveal">
+        <div>
+          <p class="section-kicker">Live Websites</p>
+          <h2>實作網站</h2>
+        </div>
+        <p class="section-desc">整理已能實際開啟操作的網站，呈現從開發、部署到真實流程使用的實作成果。</p>
+      </div>
+      <div class="grid team-grid">
+        <article class="card team-card reveal">
+          <div>
+            <h3>EA_Playmate_Group</h3>
+            <p>遊戲代打團隊管理系統，包含後端開發、資料庫設計、部署與自動化流程實作。</p>
+            <div class="skill-list">
+              <span class="tag cyan">ASP.NET Core</span>
+              <span class="tag green">SQL Server</span>
+              <span class="tag amber">IIS</span>
+            </div>
+          </div>
+          <a class="btn primary" href="http://114.32.122.215:8081/" target="_blank" rel="noopener noreferrer">開啟網站</a>
+        </article>
+        <article class="card team-card reveal">
+          <div>
+            <h3>905 人力資源網</h3>
+            <p>團隊實作專案，參與履歷與媒合相關流程，練習多人協作、功能整合與實際網站操作情境。</p>
+            <div class="skill-list">
+              <span class="tag cyan">Team Project</span>
+              <span class="tag green">HR Platform</span>
+              <span class="tag amber">Web System</span>
+            </div>
+          </div>
+          <a class="btn primary" href="https://vip.905.com.tw/Member/ResumeEdit" target="_blank" rel="noopener noreferrer">開啟網站</a>
+        </article>
+      </div>
     </section>
 
     <section class="section" id="repositories">
       <div class="section-head reveal">
         <div>
-          <p class="section-kicker">GitHub Repository</p>
-          <h2>Repository 展示區</h2>
+          <p class="section-kicker">Repository Enhancement</p>
+          <h2>GitHub Repository 展示區</h2>
         </div>
-        <p class="section-desc">由 JavaScript 自動產生專案卡片，可直接修改資料陣列更新 GitHub Pages 內容。</p>
+        <p class="section-desc">每個 repository 顯示專案說明、技術標籤、完成度與 GitHub 連結，讓技術主管能快速掃描作品狀態。</p>
       </div>
       <div class="repo-toolbar reveal">
         <input class="repo-search" id="repoSearch" type="search" placeholder="搜尋 repo 或技術標籤" aria-label="搜尋 GitHub repository" />
         <span class="tag cyan" id="repoCount">0 Repos</span>
       </div>
       <div class="grid repo-grid" id="repoGrid"></div>
+      <div class="repo-pagination reveal" aria-label="Repository 分頁控制">
+        <button class="page-btn" type="button" id="repoPrev" aria-label="上一頁">&lt;</button>
+        <span class="page-status" id="repoPageStatus">1 / 1</span>
+        <button class="page-btn" type="button" id="repoNext" aria-label="下一頁">&gt;</button>
+      </div>
     </section>
 
     <section class="section" id="achievement">
@@ -1032,7 +1416,7 @@
         </article>
         <article class="card achievement-card reveal">
           <strong>完成 IIS 對外部署</strong>
-          <p>具備 Windows Server 與 IIS 站台部署經驗。</p>
+          <p>獲得 Windows Server 與 IIS 站台部署經驗。</p>
         </article>
         <article class="card achievement-card reveal">
           <strong>GitHub Actions CI/CD</strong>
@@ -1055,7 +1439,7 @@
           <p class="section-kicker">Contact</p>
           <h2>聯絡方式</h2>
         </div>
-        <p class="section-desc">歡迎透過 GitHub、Email、LINE 或 Discord 聯繫，一起討論專案、學習與合作機會。</p>
+        <p class="section-desc">歡迎透過 GitHub、Email 或 LINE 聯繫，一起討論專案、學習與合作機會。</p>
       </div>
       <div class="contact-wrap">
         <article class="card contact-card reveal">
@@ -1075,16 +1459,9 @@
         <article class="card contact-card reveal">
           <div>
             <h3>LINE</h3>
-            <p>970325kiki</p>
+            <p>點擊加入 LINE</p>
           </div>
           <a class="btn" href="https://line.me/ti/p/~970325kiki" target="_blank" rel="noopener noreferrer">加入 LINE</a>
-        </article>
-        <article class="card contact-card reveal">
-          <div>
-            <h3>Discord</h3>
-            <p>mumujiang0928</p>
-          </div>
-          <button class="btn" type="button" data-copy="mumujiang0928">複製 Discord</button>
         </article>
       </div>
     </section>
@@ -1097,77 +1474,154 @@
   </footer>
 
   <script>
-    const featuredProjects = [
+    const GITHUB_OWNER = "7777lingling";
+
+    let featuredProjects = [
       {
-        name: "EA_Playmate_Group",
-        description: "遊戲玩家媒合與資金管理平台",
-        tags: ["ASP.NET Core", "SQL Server", "GitHub Actions", "IIS"]
+        name: "-to-do-list",
+        description: "待辦清單應用",
+        tags: ["React", "TypeScript", "Vite", "CSS"],
+        role: "開發者",
+        learned: ["React Hooks", "TypeScript", "ESLint", "模塊化構建"],
+        progress: 70,
+        url: "https://github.com/7777lingling/-to-do-list"
       },
       {
-        name: "905 媒合管理網站",
-        description: "團隊開發專案",
-        tags: ["ASP.NET Core", "Azure SQL Database", "GitHub"]
+        name: "2k25_",
+        description: "年度學習/專案計畫",
+        tags: ["Python"],
+        role: "開發者",
+        learned: ["Python基礎"],
+        progress: 50,
+        url: "https://github.com/7777lingling/2k25_"
+      },
+      {
+        name: "2k25_mt",
+        description: "多任務年度計畫",
+        tags: ["Python"],
+        role: "開發者",
+        learned: ["Python多線程/並發"],
+        progress: 50,
+        url: "https://github.com/7777lingling/2k25_mt"
+      },
+      {
+        name: "C-switch-case-",
+        description: "C語言教學/練習",
+        tags: ["C"],
+        role: "學習者",
+        learned: ["C語言控制流結構"],
+        progress: 60,
+        url: "https://github.com/7777lingling/C-switch-case-"
+      },
+      {
+        name: "dc_to-do-list",
+        description: "Discord待辦清單機器人",
+        tags: ["Python"],
+        role: "開發者",
+        learned: ["Python", "Discord.py", "機器人開發"],
+        progress: 80,
+        url: "https://github.com/7777lingling/dc_to-do-list"
+      },
+      {
+        name: "do-while-",
+        description: "C語言迴圈練習",
+        tags: ["C"],
+        role: "學習者",
+        learned: ["C語言迴圈結構"],
+        progress: 60,
+        url: "https://github.com/7777lingling/do-while-"
+      },
+      {
+        name: "EA_Playmate_Group",
+        description: "遊戲代打團隊管理系統",
+        tags: ["C#", "ASP.NET Core", "SQL Server"],
+        role: "開發者/架構師",
+        learned: ["EF Core", "Web API設計", "資料庫設計", "CI/CD (GitHub Actions)", "Windows Installer打包"],
+        progress: 85,
+        url: "https://github.com/7777lingling/EA_Playmate_Group"
+      },
+      {
+        name: "EFBlog",
+        description: "Entity Framework部落格",
+        tags: ["未確定"],
+        role: "學習者/開發者",
+        learned: ["Entity Framework ORM框架"],
+        progress: 40,
+        url: "https://github.com/7777lingling/EFBlog"
+      },
+      {
+        name: "Gmail_SMTP_",
+        description: "Gmail SMTP郵件發送",
+        tags: ["C#"],
+        role: "開發者",
+        learned: ["C#郵件協議", "SMTP整合"],
+        progress: 70,
+        url: "https://github.com/7777lingling/Gmail_SMTP_"
       },
       {
         name: "Monitor_website",
-        description: "網站監控與 Discord 通知系統",
-        tags: ["Python", "Discord API", "自動化排程"]
+        description: "德霖五專監控系統",
+        tags: ["Python"],
+        role: "開發者",
+        learned: ["Web爬蟲", "Discord API", "檔案日誌管理", "自動化排程"],
+        progress: 90,
+        url: "https://github.com/7777lingling/Monitor_website"
       },
       {
-        name: "RabbitMQ Test",
-        description: "訊息佇列測試專案",
-        tags: ["RabbitMQ", "Message Queue", "Backend"]
+        name: "MusicAutoPlayer",
+        description: "音樂自動播放器",
+        tags: ["Kotlin"],
+        role: "開發者",
+        learned: ["Kotlin", "Android開發"],
+        progress: 20,
+        url: "https://github.com/7777lingling/MusicAutoPlayer"
       },
       {
-        name: "Redis Cache Test",
-        description: "Redis 快取測試專案",
-        tags: ["Redis", "Cache", "Performance"]
+        name: "rebbitMQ_test",
+        description: "RabbitMQ消息隊列測試",
+        tags: ["C#"],
+        role: "測試開發者",
+        learned: ["消息隊列", "非同步通信架構"],
+        progress: 75,
+        url: "https://github.com/7777lingling/rebbitMQ_test"
+      },
+      {
+        name: "redis-cache-test",
+        description: "Redis快取系統測試",
+        tags: ["C#"],
+        role: "測試開發者",
+        learned: ["Redis", "分布式快取", "性能優化"],
+        progress: 75,
+        url: "https://github.com/7777lingling/redis-cache-test"
       },
       {
         name: "Roulette",
-        description: "網頁輪盤遊戲",
-        tags: ["HTML", "CSS", "JavaScript"]
+        description: "輪盤遊戲",
+        tags: ["HTML", "JavaScript", "CSS"],
+        role: "遊戲開發者",
+        learned: ["前端互動", "遊戲邏輯"],
+        progress: 65,
+        url: "https://github.com/7777lingling/Roulette"
+      },
+      {
+        name: "TW-cc",
+        description: "台灣信用卡相關",
+        tags: ["JavaScript"],
+        role: "開發者",
+        learned: ["網路應用", "資料處理"],
+        progress: 55,
+        url: "https://github.com/7777lingling/TW-cc"
       }
     ];
 
-    const repositories = [
-      {
-        name: "EA_Playmate_Group",
-        description: "遊戲玩家媒合、會員資料、金流紀錄與後台管理平台。",
-        tags: ["ASP.NET Core", "SQL Server", "IIS"],
-        url: "https://github.com/"
-      },
-      {
-        name: "905-Matching-Management",
-        description: "團隊協作開發的媒合管理網站，串接雲端資料庫並使用 GitHub 管理版本。",
-        tags: ["ASP.NET Core", "Azure SQL", "GitHub"],
-        url: "https://github.com/"
-      },
-      {
-        name: "Monitor_website",
-        description: "定期檢查網站狀態，異常時透過 Discord 發送通知。",
-        tags: ["Python", "Discord API", "Automation"],
-        url: "https://github.com/"
-      },
-      {
-        name: "RabbitMQ-Test",
-        description: "用於理解訊息佇列、Producer 與 Consumer 溝通流程的測試專案。",
-        tags: ["RabbitMQ", "Queue", "Backend"],
-        url: "https://github.com/"
-      },
-      {
-        name: "Redis-Cache-Test",
-        description: "測試 Redis 快取策略、資料讀取速度與快取失效情境。",
-        tags: ["Redis", "Cache", "Database"],
-        url: "https://github.com/"
-      },
-      {
-        name: "Roulette",
-        description: "使用前端技術製作的互動式輪盤遊戲。",
-        tags: ["HTML", "CSS", "JavaScript"],
-        url: "https://github.com/"
-      }
-    ];
+    let repositories = featuredProjects.map(project => ({ ...project }));
+
+    const PROJECTS_PER_PAGE = 6; // 3 columns x 2 rows on desktop.
+    let projectCurrentPage = 1;
+
+    const REPOS_PER_PAGE = 6; // 3 columns x 2 rows on desktop.
+    let filteredRepositories = repositories;
+    let repoCurrentPage = 1;
 
     const tagClassNames = ["cyan", "green", "amber", "rose"];
 
@@ -1175,20 +1629,86 @@
       return `<span class="tag ${tagClassNames[index % tagClassNames.length]}">${tag}</span>`;
     }
 
+    function escapeHtml(value) {
+      return String(value ?? "")
+        .replaceAll("&", "&amp;")
+        .replaceAll("<", "&lt;")
+        .replaceAll(">", "&gt;")
+        .replaceAll('"', "&quot;")
+        .replaceAll("'", "&#039;");
+    }
+
+    function splitTags(value) {
+      return String(value || "")
+        .split(/[、,，`]+/)
+        .map(item => item.trim())
+        .filter(Boolean);
+    }
+
+    function parseProgress(value) {
+      if (typeof value === "number") {
+        return Math.max(0, Math.min(100, value <= 1 ? Math.round(value * 100) : Math.round(value)));
+      }
+
+      const numeric = Number(String(value || "").replace("%", "").trim());
+      if (!Number.isFinite(numeric)) {
+        return 0;
+      }
+
+      return Math.max(0, Math.min(100, numeric <= 1 ? Math.round(numeric * 100) : Math.round(numeric)));
+    }
+
+    function getGithubRepoUrl(name) {
+      const normalizedName = encodeURIComponent(String(name || "").trim());
+      return normalizedName ? `https://github.com/${GITHUB_OWNER}/${normalizedName}` : `https://github.com/${GITHUB_OWNER}`;
+    }
+
+    function createProgress(label, value, className = "") {
+      return `
+        <div class="${escapeHtml(className)}">
+          <div class="progress-head">
+            <span class="progress-label">${escapeHtml(label)}</span>
+            <span class="progress-value">${escapeHtml(value)}%</span>
+          </div>
+          <div class="progress-track" aria-label="${escapeHtml(label)} ${escapeHtml(value)}%">
+            <div class="progress-fill" style="--value: ${escapeHtml(value)}%"></div>
+          </div>
+        </div>
+      `;
+    }
+
     function renderFeaturedProjects() {
       const container = document.getElementById("featuredProjects");
-      container.innerHTML = featuredProjects.map((project, index) => `
+      const pageStatus = document.getElementById("projectPageStatus");
+      const prevButton = document.getElementById("projectPrev");
+      const nextButton = document.getElementById("projectNext");
+      const totalPages = Math.max(1, Math.ceil(featuredProjects.length / PROJECTS_PER_PAGE));
+      const safePage = Math.min(Math.max(projectCurrentPage, 1), totalPages);
+      const pageStart = (safePage - 1) * PROJECTS_PER_PAGE;
+      const pageItems = featuredProjects.slice(pageStart, pageStart + PROJECTS_PER_PAGE);
+
+      projectCurrentPage = safePage;
+      pageStatus.textContent = `${safePage} / ${totalPages}`;
+      prevButton.disabled = safePage <= 1;
+      nextButton.disabled = safePage >= totalPages;
+
+      container.innerHTML = pageItems.map((project, index) => `
         <article class="card project-card reveal">
           <div class="project-top">
             <div>
-              <h3>${project.name}</h3>
-              <p>${project.description}</p>
+              <h3>${escapeHtml(project.name)}</h3>
+              <p>${escapeHtml(project.description)}</p>
             </div>
-            <span class="project-index">0${index + 1}</span>
+            <span class="project-index">${String(pageStart + index + 1).padStart(2, "0")}</span>
           </div>
-          <div class="skill-list" aria-label="${project.name} 技術標籤">
-            ${project.tags.map(createTag).join("")}
+          ${project.role ? `<p class="project-role">角色：${escapeHtml(project.role)}</p>` : ""}
+          <div class="skill-list" aria-label="${escapeHtml(project.name)} 技術標籤">
+            ${project.tags.map((tag, tagIndex) => createTag(escapeHtml(tag), tagIndex)).join("")}
           </div>
+          ${project.learned?.length ? `
+            <p class="project-learned">學到：${project.learned.map(escapeHtml).join("、")}</p>
+          ` : ""}
+          ${createProgress("完成度", project.progress, "project-progress")}
         </article>
       `).join("");
     }
@@ -1196,17 +1716,31 @@
     function renderRepositories(list) {
       const grid = document.getElementById("repoGrid");
       const count = document.getElementById("repoCount");
+      const pageStatus = document.getElementById("repoPageStatus");
+      const prevButton = document.getElementById("repoPrev");
+      const nextButton = document.getElementById("repoNext");
+      const totalPages = Math.max(1, Math.ceil(list.length / REPOS_PER_PAGE));
+      const safePage = Math.min(Math.max(repoCurrentPage, 1), totalPages);
+      const pageStart = (safePage - 1) * REPOS_PER_PAGE;
+      const pageItems = list.slice(pageStart, pageStart + REPOS_PER_PAGE);
 
       count.textContent = `${list.length} Repos`;
-      grid.innerHTML = list.map(repo => `
+      repoCurrentPage = safePage;
+      pageStatus.textContent = `${safePage} / ${totalPages}`;
+      prevButton.disabled = safePage <= 1;
+      nextButton.disabled = safePage >= totalPages;
+
+      grid.innerHTML = pageItems.map(repo => `
         <article class="card repo-card reveal">
-          <h3>${repo.name}</h3>
-          <p>${repo.description}</p>
-          <div class="skill-list" aria-label="${repo.name} 技術標籤">
-            ${repo.tags.map(createTag).join("")}
+          <h3>${escapeHtml(repo.name)}</h3>
+          <p>${escapeHtml(repo.description)}</p>
+          ${repo.role ? `<p class="project-role">角色：${escapeHtml(repo.role)}</p>` : ""}
+          <div class="skill-list" aria-label="${escapeHtml(repo.name)} 技術標籤">
+            ${repo.tags.map((tag, tagIndex) => createTag(escapeHtml(tag), tagIndex)).join("")}
           </div>
+          ${createProgress("完成度", repo.progress, "repo-progress")}
           <div class="repo-meta">
-            <a class="repo-link" href="${repo.url}" target="_blank" rel="noopener noreferrer" aria-label="開啟 ${repo.name} GitHub repository">
+            <a class="repo-link" href="${escapeHtml(repo.url)}" target="_blank" rel="noopener noreferrer" aria-label="開啟 ${escapeHtml(repo.name)} GitHub repository">
               GitHub
               <svg width="15" height="15" viewBox="0 0 24 24" fill="none" aria-hidden="true">
                 <path d="M7 17L17 7M9 7h8v8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
@@ -1221,16 +1755,43 @@
 
     function filterRepositories(keyword) {
       const normalized = keyword.trim().toLowerCase();
+      repoCurrentPage = 1;
+
       if (!normalized) {
-        renderRepositories(repositories);
+        filteredRepositories = repositories;
+        renderRepositories(filteredRepositories);
         return;
       }
 
-      const filtered = repositories.filter(repo => {
-        const text = `${repo.name} ${repo.description} ${repo.tags.join(" ")}`.toLowerCase();
+      filteredRepositories = repositories.filter(repo => {
+        const text = `${repo.name} ${repo.description} ${repo.role || ""} ${repo.tags.join(" ")} ${(repo.learned || []).join(" ")}`.toLowerCase();
         return text.includes(normalized);
       });
-      renderRepositories(filtered);
+      renderRepositories(filteredRepositories);
+    }
+
+    function initRepositoryPagination() {
+      document.getElementById("repoPrev").addEventListener("click", () => {
+        repoCurrentPage -= 1;
+        renderRepositories(filteredRepositories);
+      });
+
+      document.getElementById("repoNext").addEventListener("click", () => {
+        repoCurrentPage += 1;
+        renderRepositories(filteredRepositories);
+      });
+    }
+
+    function initProjectPagination() {
+      document.getElementById("projectPrev").addEventListener("click", () => {
+        projectCurrentPage -= 1;
+        renderFeaturedProjects();
+      });
+
+      document.getElementById("projectNext").addEventListener("click", () => {
+        projectCurrentPage += 1;
+        renderFeaturedProjects();
+      });
     }
 
     function observeRevealElements() {
@@ -1271,47 +1832,14 @@
       });
     }
 
-    function initCopyButtons() {
-      document.querySelectorAll("[data-copy]").forEach(button => {
-        button.addEventListener("click", async () => {
-          const text = button.dataset.copy;
-          const originalText = button.textContent;
-
-          try {
-            if (navigator.clipboard && window.isSecureContext) {
-              await navigator.clipboard.writeText(text);
-            } else {
-              const textarea = document.createElement("textarea");
-              textarea.value = text;
-              textarea.style.position = "fixed";
-              textarea.style.left = "-9999px";
-              document.body.appendChild(textarea);
-              textarea.focus();
-              textarea.select();
-              document.execCommand("copy");
-              textarea.remove();
-            }
-
-            button.textContent = "已複製";
-            setTimeout(() => {
-              button.textContent = originalText;
-            }, 1600);
-          } catch (error) {
-            button.textContent = "請手動複製";
-            setTimeout(() => {
-              button.textContent = originalText;
-            }, 1800);
-          }
-        });
-      });
-    }
-
     document.addEventListener("DOMContentLoaded", () => {
       document.getElementById("year").textContent = new Date().getFullYear();
+      filteredRepositories = repositories;
       renderFeaturedProjects();
-      renderRepositories(repositories);
+      renderRepositories(filteredRepositories);
       initNavigation();
-      initCopyButtons();
+      initProjectPagination();
+      initRepositoryPagination();
       observeRevealElements();
 
       document.getElementById("repoSearch").addEventListener("input", event => {
