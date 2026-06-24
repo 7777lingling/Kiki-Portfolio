@@ -1084,7 +1084,7 @@
             <h3>Discord</h3>
             <p>mumujiang0928</p>
           </div>
-          <a class="btn" href="https://discord.com/app" target="_blank" rel="noopener noreferrer">開啟 Discord</a>
+          <button class="btn" type="button" data-copy="mumujiang0928">複製 Discord</button>
         </article>
       </div>
     </section>
@@ -1271,11 +1271,47 @@
       });
     }
 
+    function initCopyButtons() {
+      document.querySelectorAll("[data-copy]").forEach(button => {
+        button.addEventListener("click", async () => {
+          const text = button.dataset.copy;
+          const originalText = button.textContent;
+
+          try {
+            if (navigator.clipboard && window.isSecureContext) {
+              await navigator.clipboard.writeText(text);
+            } else {
+              const textarea = document.createElement("textarea");
+              textarea.value = text;
+              textarea.style.position = "fixed";
+              textarea.style.left = "-9999px";
+              document.body.appendChild(textarea);
+              textarea.focus();
+              textarea.select();
+              document.execCommand("copy");
+              textarea.remove();
+            }
+
+            button.textContent = "已複製";
+            setTimeout(() => {
+              button.textContent = originalText;
+            }, 1600);
+          } catch (error) {
+            button.textContent = "請手動複製";
+            setTimeout(() => {
+              button.textContent = originalText;
+            }, 1800);
+          }
+        });
+      });
+    }
+
     document.addEventListener("DOMContentLoaded", () => {
       document.getElementById("year").textContent = new Date().getFullYear();
       renderFeaturedProjects();
       renderRepositories(repositories);
       initNavigation();
+      initCopyButtons();
       observeRevealElements();
 
       document.getElementById("repoSearch").addEventListener("input", event => {
